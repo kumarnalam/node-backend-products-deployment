@@ -1,4 +1,5 @@
 const { signUp, loggedIn, loggedInfoUser } = require('../services/auth.service');
+const readEvent = require('../utils/eventEmitter');
 
 
 const signUphandlerController = async (req, res) => {
@@ -22,6 +23,8 @@ const signUphandlerController = async (req, res) => {
 const loginHandlerController = async(req, res) => {
     try {
         const loggedUser = await loggedIn(req.body.email, req.body.password);
+
+        readEvent.emit("loggedSuccessfully", {loggedUser: loggedUser});
 
         res.status(200).json({
           message: "Logged in successfully",
