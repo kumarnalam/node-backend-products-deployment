@@ -20,7 +20,7 @@ const signUphandlerController = async (req, res) => {
    }
 }
 
-const loginHandlerController = async(req, res) => {
+const loginHandlerController = async(req, res, next) => {
     try {
         const loggedUser = await loggedIn(req.body.email, req.body.password);
 
@@ -31,9 +31,8 @@ const loginHandlerController = async(req, res) => {
           user: loggedUser,
         });
     } catch(error) {
-        res.status(400).json({
-            message: error.message
-        })
+       error.status = 500;
+       next(error);
     }
 }
 
