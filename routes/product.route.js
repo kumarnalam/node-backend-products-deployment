@@ -5,6 +5,18 @@ const { createProductHandlerController, editProductHandlerController, deleteProd
 const productRoute = express.Router();
 
 
+/**
+ * @swagger
+ * /api/product:
+ *   get:
+ *     summary: Get all products
+ *     tags: [products]
+ *     responses:
+ *       200:
+ *         description: Products retrieved successfully
+ */
+
+
 
 
 productRoute.post('/create', authvalidateToken, createProductHandlerController);
@@ -17,3 +29,4 @@ productRoute.get('/allproducts', authvalidateToken, getAllProductsHandlerControl
 
 
 module.exports = productRoute;
+

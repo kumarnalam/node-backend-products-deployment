@@ -34,8 +34,8 @@ const products = new mongoose.Schema({
       },
       message: 'product_size must contain 1 to 8 allowed size values'
     }
-   }
-},
+   },
+  },
    {
     timestamps: true
    }
